@@ -108,4 +108,12 @@ public class TextureRemix {
         images.get(id).splitImage();
     }
     
+    public static void splitAlpha(int id) {
+        images.get(id).splitAlpha();
+    }
+    
+    public static void splitAlphaHalf(int id) {
+        images.get(id).splitAlphaHalf();
+    }
+    
 }

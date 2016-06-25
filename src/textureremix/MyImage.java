@@ -410,4 +410,51 @@ public class MyImage {
         b.saveFile("_b");
         a.saveFile("_a");
     }
+    
+    void splitAlpha() {
+        MyImage r = new MyImage(id);
+        MyImage a = new MyImage(id);
+        r.blank(getWidth(), getHeight());
+        a.blank(getWidth(), getHeight());
+        for (int row = 0; row < getHeight(); row++) {
+            for (int col = 0; col < getWidth(); col++) {
+                r.setRed(row, col, getRed(row, col));
+                r.setGreen(row, col, getGreen(row, col));
+                r.setBlue(row, col, getBlue(row, col));
+                r.setAlpha(row, col, 255);
+                a.setGrey(row, col, getAlpha(row, col));
+            }
+        }
+        r.saveFile("_rgb");
+        a.saveFile("_a");
+    }
+    
+    void splitAlphaHalf() {
+        MyImage a = new MyImage(id);
+        MyImage b = new MyImage(id);
+        a.blank(getWidth(), getHeight());
+        b.blank(getWidth(), getHeight());
+        for (int row = 0; row < getHeight(); row++) {
+            for (int col = 0; col < getWidth(); col++) {
+                int alph = getAlpha(row, col);
+                if (alph > 127) {
+                    a.setGrey(row, col, 255);
+                    if (alph == 255) {
+                        b.setGrey(row, col, 255);
+                    } else {
+                        b.setGrey(row, col, (alph-128)*2);
+                    }
+                } else {
+                    if (alph == 127) {
+                        a.setGrey(row, col, 255);
+                    } else {
+                        a.setGrey(row, col, alph*2);
+                    }
+                    b.setGrey(row, col, 0);
+                }
+            }
+        }
+        a.saveFile("_a1");
+        b.saveFile("_a2");
+    }
 }
