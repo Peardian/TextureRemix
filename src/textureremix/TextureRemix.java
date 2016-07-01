@@ -25,6 +25,7 @@ package textureremix;
 
 import java.util.List;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -68,6 +69,20 @@ public class TextureRemix {
         savepath = path;
     }
     
+    public static String getFilenameFromPath( String file ) {
+        int i = file.lastIndexOf( "." );
+        if( i != -1 ) {
+            file = file.substring(0, i);
+        }
+        i = file.lastIndexOf("/");
+        if( i != -1 )
+            file = file.substring( i+1 );
+        i = file.lastIndexOf("\\");
+        if( i != -1 )
+            file = file.substring( i+1 );
+        return file;
+    }
+    
     public static void loadInput(String file) {
         if (inputcount > 4) {
             return;
@@ -83,17 +98,21 @@ public class TextureRemix {
         images.add(id, img);
         inputcount++;
         //temporary GUI code until proper dynamic gui is implemented
-        if (inputcount > 1) {
+        if (inputcount == 2) {
             TextureRemixGui.Inbox1.setVisible(true);
+            TextureRemixGui.Image1Caption.setText( getFilenameFromPath( file ) );
         }
-        if (inputcount > 2) {
+        if (inputcount == 3) {
             TextureRemixGui.Inbox2.setVisible(true);
+            TextureRemixGui.Image2Caption.setText( getFilenameFromPath( file ) );
         }
-        if (inputcount > 3) {
+        if (inputcount == 4) {
             TextureRemixGui.Inbox3.setVisible(true);
+            TextureRemixGui.Image3Caption.setText( getFilenameFromPath( file ) );
         }
-        if (inputcount > 4) {
+        if (inputcount == 5) {
             TextureRemixGui.Inbox4.setVisible(true);
+            TextureRemixGui.Image4Caption.setText( getFilenameFromPath( file ) );
         }
     }
     

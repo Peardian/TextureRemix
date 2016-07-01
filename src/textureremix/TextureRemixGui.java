@@ -107,7 +107,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         Inbox1 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        Image1Caption = new javax.swing.JLabel();
         split1 = new javax.swing.JLabel();
         inR1 = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
@@ -117,7 +117,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inA1 = new javax.swing.JPanel();
         inG1 = new javax.swing.JPanel();
         Inbox2 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        Image2Caption = new javax.swing.JLabel();
         split2 = new javax.swing.JLabel();
         inR2 = new javax.swing.JPanel();
         jPanel29 = new javax.swing.JPanel();
@@ -127,7 +127,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inA2 = new javax.swing.JPanel();
         inG2 = new javax.swing.JPanel();
         Inbox3 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        Image3Caption = new javax.swing.JLabel();
         split3 = new javax.swing.JLabel();
         inR3 = new javax.swing.JPanel();
         jPanel31 = new javax.swing.JPanel();
@@ -137,7 +137,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inA3 = new javax.swing.JPanel();
         inG3 = new javax.swing.JPanel();
         Inbox4 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        Image4Caption = new javax.swing.JLabel();
         split4 = new javax.swing.JLabel();
         inR4 = new javax.swing.JPanel();
         jPanel33 = new javax.swing.JPanel();
@@ -236,12 +236,13 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         Inbox1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel6.setText("Image 1");
+        Image1Caption.setText("Image 1");
+        Image1Caption.setName(""); // NOI18N
 
         split1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         split1.setForeground(new java.awt.Color(204, 0, 0));
         split1.setText("|||");
-        split1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        split1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         split1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 split1MouseClicked(evt);
@@ -250,7 +251,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         inR1.setBackground(new java.awt.Color(204, 0, 0));
         inR1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        inR1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inR1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inR1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inR1MouseClicked(evt);
@@ -309,7 +310,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         inB1.setBackground(new java.awt.Color(0, 0, 204));
         inB1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        inB1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inB1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inB1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inB1MouseClicked(evt);
@@ -329,7 +330,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         inA1.setBackground(new java.awt.Color(153, 153, 153));
         inA1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        inA1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inA1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inA1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inA1MouseClicked(evt);
@@ -349,7 +350,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         inG1.setBackground(new java.awt.Color(0, 204, 0));
         inG1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        inG1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inG1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inG1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inG1MouseClicked(evt);
@@ -373,7 +374,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             Inbox1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Inbox1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
+                .addComponent(Image1Caption)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(split1))
             .addGroup(Inbox1Layout.createSequentialGroup()
@@ -391,7 +392,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             Inbox1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Inbox1Layout.createSequentialGroup()
                 .addGroup(Inbox1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(Image1Caption)
                     .addComponent(split1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -407,12 +408,13 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         Inbox2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel8.setText("Image 2");
+        Image2Caption.setText("Image 2");
+        Image2Caption.setName("Image2Caption"); // NOI18N
 
         split2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         split2.setForeground(new java.awt.Color(204, 0, 0));
         split2.setText("|||");
-        split2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        split2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         split2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 split2MouseClicked(evt);
@@ -421,7 +423,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         inR2.setBackground(new java.awt.Color(204, 0, 0));
         inR2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        inR2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inR2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inR2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inR2MouseClicked(evt);
@@ -480,7 +482,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         inB2.setBackground(new java.awt.Color(0, 0, 204));
         inB2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        inB2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inB2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inB2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inB2MouseClicked(evt);
@@ -500,7 +502,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         inA2.setBackground(new java.awt.Color(153, 153, 153));
         inA2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        inA2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inA2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inA2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inA2MouseClicked(evt);
@@ -520,7 +522,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         inG2.setBackground(new java.awt.Color(0, 204, 0));
         inG2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        inG2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inG2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inG2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inG2MouseClicked(evt);
@@ -544,7 +546,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             Inbox2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Inbox2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel8)
+                .addComponent(Image2Caption)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(split2))
             .addGroup(Inbox2Layout.createSequentialGroup()
@@ -562,7 +564,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             Inbox2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Inbox2Layout.createSequentialGroup()
                 .addGroup(Inbox2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
+                    .addComponent(Image2Caption)
                     .addComponent(split2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -578,12 +580,12 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         Inbox3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel10.setText("Image 3");
+        Image3Caption.setText("Image 3");
 
         split3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         split3.setForeground(new java.awt.Color(204, 0, 0));
         split3.setText("|||");
-        split3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        split3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         split3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 split3MouseClicked(evt);
@@ -592,7 +594,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         inR3.setBackground(new java.awt.Color(204, 0, 0));
         inR3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        inR3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inR3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inR3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inR3MouseClicked(evt);
@@ -651,7 +653,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         inB3.setBackground(new java.awt.Color(0, 0, 204));
         inB3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        inB3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inB3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inB3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inB3MouseClicked(evt);
@@ -671,7 +673,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         inA3.setBackground(new java.awt.Color(153, 153, 153));
         inA3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        inA3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inA3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inA3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inA3MouseClicked(evt);
@@ -691,7 +693,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         inG3.setBackground(new java.awt.Color(0, 204, 0));
         inG3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        inG3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inG3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inG3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inG3MouseClicked(evt);
@@ -715,7 +717,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             Inbox3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Inbox3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel10)
+                .addComponent(Image3Caption)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(split3))
             .addGroup(Inbox3Layout.createSequentialGroup()
@@ -733,7 +735,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             Inbox3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Inbox3Layout.createSequentialGroup()
                 .addGroup(Inbox3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
+                    .addComponent(Image3Caption)
                     .addComponent(split3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -749,12 +751,12 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         Inbox4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel12.setText("Image 4");
+        Image4Caption.setText("Image 4");
 
         split4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         split4.setForeground(new java.awt.Color(204, 0, 0));
         split4.setText("|||");
-        split4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        split4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         split4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 split4MouseClicked(evt);
@@ -763,7 +765,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         inR4.setBackground(new java.awt.Color(204, 0, 0));
         inR4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        inR4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inR4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inR4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inR4MouseClicked(evt);
@@ -822,7 +824,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         inB4.setBackground(new java.awt.Color(0, 0, 204));
         inB4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        inB4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inB4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inB4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inB4MouseClicked(evt);
@@ -842,7 +844,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         inA4.setBackground(new java.awt.Color(153, 153, 153));
         inA4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        inA4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inA4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inA4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inA4MouseClicked(evt);
@@ -862,7 +864,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         inG4.setBackground(new java.awt.Color(0, 204, 0));
         inG4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        inG4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inG4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         inG4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inG4MouseClicked(evt);
@@ -886,7 +888,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             Inbox4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Inbox4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel12)
+                .addComponent(Image4Caption)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(split4))
             .addGroup(Inbox4Layout.createSequentialGroup()
@@ -904,7 +906,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             Inbox4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Inbox4Layout.createSequentialGroup()
                 .addGroup(Inbox4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
+                    .addComponent(Image4Caption)
                     .addComponent(split4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1062,7 +1064,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         outR1.setBackground(new java.awt.Color(204, 0, 0));
         outR1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        outR1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        outR1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         outR1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 outR1MouseClicked(evt);
@@ -1082,7 +1084,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         outG1.setBackground(new java.awt.Color(0, 204, 0));
         outG1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        outG1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        outG1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         outG1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 outG1MouseClicked(evt);
@@ -1102,7 +1104,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         outB1.setBackground(new java.awt.Color(0, 0, 204));
         outB1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        outB1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        outB1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         outB1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 outB1MouseClicked(evt);
@@ -1122,7 +1124,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         outA1.setBackground(new java.awt.Color(153, 153, 153));
         outA1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        outA1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        outA1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         outA1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 outA1MouseClicked(evt);
@@ -1220,7 +1222,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         outR2.setBackground(new java.awt.Color(204, 0, 0));
         outR2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        outR2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        outR2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         outR2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 outR2MouseClicked(evt);
@@ -1240,7 +1242,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         outG2.setBackground(new java.awt.Color(0, 204, 0));
         outG2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        outG2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        outG2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         outG2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 outG2MouseClicked(evt);
@@ -1260,7 +1262,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         outB2.setBackground(new java.awt.Color(0, 0, 204));
         outB2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        outB2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        outB2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         outB2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 outB2MouseClicked(evt);
@@ -1280,7 +1282,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         outA2.setBackground(new java.awt.Color(153, 153, 153));
         outA2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        outA2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        outA2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         outA2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 outA2MouseClicked(evt);
@@ -1378,7 +1380,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         outR3.setBackground(new java.awt.Color(204, 0, 0));
         outR3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        outR3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        outR3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         outR3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 outR3MouseClicked(evt);
@@ -1398,7 +1400,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         outG3.setBackground(new java.awt.Color(0, 204, 0));
         outG3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        outG3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        outG3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         outG3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 outG3MouseClicked(evt);
@@ -1418,7 +1420,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         outB3.setBackground(new java.awt.Color(0, 0, 204));
         outB3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        outB3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        outB3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         outB3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 outB3MouseClicked(evt);
@@ -1438,7 +1440,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         outA3.setBackground(new java.awt.Color(153, 153, 153));
         outA3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        outA3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        outA3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         outA3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 outA3MouseClicked(evt);
@@ -1536,7 +1538,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         outR4.setBackground(new java.awt.Color(204, 0, 0));
         outR4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        outR4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        outR4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         outR4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 outR4MouseClicked(evt);
@@ -1556,7 +1558,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         outG4.setBackground(new java.awt.Color(0, 204, 0));
         outG4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        outG4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        outG4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         outG4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 outG4MouseClicked(evt);
@@ -1576,7 +1578,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         outB4.setBackground(new java.awt.Color(0, 0, 204));
         outB4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        outB4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        outB4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         outB4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 outB4MouseClicked(evt);
@@ -1596,7 +1598,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         outA4.setBackground(new java.awt.Color(153, 153, 153));
         outA4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        outA4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        outA4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         outA4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 outA4MouseClicked(evt);
@@ -1703,7 +1705,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1754,7 +1756,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
                     .addGroup(basePanelLayout.createSequentialGroup()
                         .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(DebugPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 525, Short.MAX_VALUE)))
+                        .addComponent(DebugPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         basePanelLayout.setVerticalGroup(
@@ -2381,6 +2383,10 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel DebugPanel;
+    public static javax.swing.JLabel Image1Caption;
+    public static javax.swing.JLabel Image2Caption;
+    public static javax.swing.JLabel Image3Caption;
+    public static javax.swing.JLabel Image4Caption;
     public static javax.swing.JPanel Inbox1;
     public static javax.swing.JPanel Inbox2;
     public static javax.swing.JPanel Inbox3;
@@ -2439,9 +2445,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -2452,9 +2456,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
