@@ -83,6 +83,10 @@ public class TextureRemix {
         return file;
     }
     
+    public static void ShowError( String msg, String headline ) {
+        JOptionPane.showMessageDialog(null, msg, headline, JOptionPane.ERROR_MESSAGE );
+    }
+    
     public static void loadInput(String file) {
         if (inputcount > 4) {
             return;
@@ -92,7 +96,7 @@ public class TextureRemix {
         try {
             img = new MyImage(id, file);
         } catch( Exception e ) {
-            JOptionPane.showMessageDialog(null, "Error loading file "+file+": "+e.toString(), "Error loading File", JOptionPane.ERROR_MESSAGE );
+            ShowError( "Error loading file "+file+": "+e.toString(), "Error loading File" );
             return;
         }
         images.add(id, img);
@@ -123,6 +127,10 @@ public class TextureRemix {
     }
     
     public static void saveAll() {
+        if( savepath.length() < 1 ) {
+            ShowError( "Need to set Output Path first!", "Outputpath Missing" );
+            return;
+        }
         for (MyImage element : outputs) {
             if (element != null) {
                 element.generateImage();
@@ -131,14 +139,26 @@ public class TextureRemix {
     }
     
     public static void splitImage(int id) {
+        if( savepath.length() < 1 ) {
+            ShowError( "Need to set Output Path first!", "Outputpath Missing" );
+            return;
+        }
         images.get(id).splitImage();
     }
     
     public static void splitAlpha(int id) {
+        if( savepath.length() < 1 ) {
+            ShowError( "Need to set Output Path first!", "Outputpath Missing" );
+            return;
+        }
         images.get(id).splitAlpha();
     }
     
     public static void splitAlphaHalf(int id) {
+        if( savepath.length() < 1 ) {
+            ShowError( "Need to set Output Path first!", "Outputpath Missing" );
+            return;
+        }
         images.get(id).splitAlphaHalf();
     }
     
