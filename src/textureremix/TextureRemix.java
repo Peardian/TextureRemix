@@ -73,7 +73,14 @@ public class TextureRemix {
             return;
         }
         int id = inputcount;
-        images.add(id, new MyImage(id, file));
+        MyImage img;
+        try {
+            img = new MyImage(id, file);
+        } catch( Exception e ) {
+            JOptionPane.showMessageDialog(null, "Error loading file "+file+": "+e.toString(), "Error loading File", JOptionPane.ERROR_MESSAGE );
+            return;
+        }
+        images.add(id, img);
         inputcount++;
         //temporary GUI code until proper dynamic gui is implemented
         if (inputcount > 1) {
