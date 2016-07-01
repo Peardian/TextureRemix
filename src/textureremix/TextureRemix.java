@@ -87,6 +87,10 @@ public class TextureRemix {
         JOptionPane.showMessageDialog(null, msg, headline, JOptionPane.ERROR_MESSAGE );
     }
     
+    public static void ShowMessage( String msg, String headline ) {
+        JOptionPane.showMessageDialog(null, msg, headline, JOptionPane.INFORMATION_MESSAGE );
+    }
+    
     public static void loadInput(String file) {
         if (inputcount > 4) {
             return;
@@ -136,6 +140,7 @@ public class TextureRemix {
                 element.generateImage();
             }
         }
+        ShowMessage( "Saving images complete!", "" );
     }
     
     public static void splitImage(int id) {
@@ -144,6 +149,7 @@ public class TextureRemix {
             return;
         }
         images.get(id).splitImage();
+        ShowMessage( "Split of Image "+id+" complete!", "" );
     }
     
     public static void splitAlpha(int id) {
@@ -152,6 +158,7 @@ public class TextureRemix {
             return;
         }
         images.get(id).splitAlpha();
+        ShowMessage( "Alpha Split of Image "+id+" complete!", "" );
     }
     
     public static void splitAlphaHalf(int id) {
@@ -160,6 +167,7 @@ public class TextureRemix {
             return;
         }
         images.get(id).splitAlphaHalf();
+        ShowMessage( "Alpha Half split of Image "+id+" complete!", "" );
     }
     
 }
