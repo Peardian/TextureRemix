@@ -28,6 +28,8 @@ import javax.swing.Timer;
 import java.io.*;
 import javax.imageio.ImageIO;
 import java.awt.image.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import static textureremix.TextureRemix.outputcount;
 import static textureremix.TextureRemix.outputBoxes;
 
@@ -215,7 +217,12 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         jLabel1.setText("Output Folder:");
 
-        jTextField1.setText("Select a folder");
+        jTextField1.setText((TextureRemix.savepath != "")?TextureRemix.savepath:"Select a folder");
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
+            }
+        });
 
         folderButton.setText("Browse");
         folderButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1824,7 +1831,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             System.out.println("File access cancelled by user.");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
     //https://netbeans.org/kb/docs/java/gui-filechooser.html
     private void folderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_folderButtonActionPerformed
         int returnVal = folderChooser.showOpenDialog(this);
@@ -2379,6 +2386,11 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         TextureRemix.splitAlphaHalf(4);
     }//GEN-LAST:event_jLabel18MouseClicked
 
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        // TODO add your handling code here:
+        TextureRemix.setPath( jTextField1.getText() );
+    }//GEN-LAST:event_jTextField1FocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -2501,7 +2513,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel33;
-    private javax.swing.JTextField jTextField1;
+    private static javax.swing.JTextField jTextField1;
     public static javax.swing.JPanel outA1;
     public static javax.swing.JPanel outA2;
     public static javax.swing.JPanel outA3;

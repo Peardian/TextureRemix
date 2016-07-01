@@ -23,6 +23,10 @@ SOFTWARE.
  */
 package textureremix;
 
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -49,6 +53,24 @@ public class TextureRemix {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        // Check for savepath persistence file
+        File f = new File( "savepath.txt" );
+        if( f.exists() && f.isFile() ) {
+            try {
+                List<String> lines = Files.readAllLines(Paths.get(f.getAbsolutePath()), Charset.defaultCharset() );
+                if( lines.size() > 0 )
+                    savepath = lines.get(0);
+                else {
+                    System.out.println( "File "+f.getAbsolutePath()+" is empty" );
+                }
+            } catch( IOException io ) {
+                // ignore exception, savepath will be empty
+                System.out.println( "Error reading file "+f.getAbsolutePath()+": "+io.toString() );
+            }
+        } else {
+            System.out.println( "File savepath.txt not found" );
+        }
+        
         //setup
         images.add(0,null);
         outputs.add(0,null);
@@ -66,7 +88,14 @@ public class TextureRemix {
     }
     
     public static void setPath(String path) {
+        if( path.contains("Select a folder") ) return;
+        System.out.println( "Savepath set to "+path );
         savepath = path;
+        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream("savepath.txt"), Charset.defaultCharset()))) {
+            writer.write(savepath);
+        } catch( IOException io ) {
+        }
     }
     
     public static String getFilenameFromPath( String file ) {
