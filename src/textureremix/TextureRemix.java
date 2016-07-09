@@ -54,6 +54,25 @@ public class TextureRemix {
      */
     public static void main(String[] args) {
         // Check for savepath persistence file
+        LoadPersistedSavePath();
+
+        //setup
+        images.add(0,null);
+        outputs.add(0,null);
+        outputBoxes.add(0,null);
+        inputcount = 1;
+        outputcount = 1;
+        
+        //Todo: remove this once I can do dynamic layouts
+        addOutput();
+        addOutput();
+        addOutput();
+        addOutput();
+
+        TextureRemixGui.main(args);
+    }
+    
+    private static void LoadPersistedSavePath() {
         File f = new File( "savepath.txt" );
         if( f.exists() && f.isFile() ) {
             try {
@@ -70,32 +89,21 @@ public class TextureRemix {
         } else {
             System.out.println( "File savepath.txt not found" );
         }
-        
-        //setup
-        images.add(0,null);
-        outputs.add(0,null);
-        outputBoxes.add(0,null);
-        inputcount = 1;
-        outputcount = 1;
-
-        //Todo: remove this once I can do dynamic layouts
-        addOutput();
-        addOutput();
-        addOutput();
-        addOutput();
-
-        TextureRemixGui.main(args);
+    }
+    
+    private static void SavePersistedSavePath() {
+        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+            new FileOutputStream("savepath.txt"), Charset.defaultCharset()))) {
+            writer.write(savepath);
+        } catch( IOException io ) {
+        }
     }
     
     public static void setPath(String path) {
         if( path.contains("Select a folder") ) return;
         System.out.println( "Savepath set to "+path );
         savepath = path;
-        try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream("savepath.txt"), Charset.defaultCharset()))) {
-            writer.write(savepath);
-        } catch( IOException io ) {
-        }
+        SavePersistedSavePath();
     }
     
     public static String getFilenameFromPath( String file ) {
