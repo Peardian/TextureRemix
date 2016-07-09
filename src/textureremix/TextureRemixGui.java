@@ -28,6 +28,7 @@ import javax.swing.Timer;
 import java.io.*;
 import javax.imageio.ImageIO;
 import java.awt.image.*;
+import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import static textureremix.TextureRemix.outputcount;
@@ -1998,6 +1999,15 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inG4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         inB4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         inA4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+    }
+    
+        
+    public static void ShowError( String msg, String headline ) {
+        JOptionPane.showMessageDialog(null, msg, headline, JOptionPane.ERROR_MESSAGE );
+    }
+    
+    public static void ShowMessage( String msg, String headline ) {
+        JOptionPane.showMessageDialog(null, msg, headline, JOptionPane.INFORMATION_MESSAGE );
     }
     
     private javax.swing.JPanel GetInPanel( char chan, int id ) {

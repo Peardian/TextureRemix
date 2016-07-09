@@ -29,7 +29,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -120,14 +119,6 @@ public class TextureRemix {
         return file;
     }
     
-    public static void ShowError( String msg, String headline ) {
-        JOptionPane.showMessageDialog(null, msg, headline, JOptionPane.ERROR_MESSAGE );
-    }
-    
-    public static void ShowMessage( String msg, String headline ) {
-        JOptionPane.showMessageDialog(null, msg, headline, JOptionPane.INFORMATION_MESSAGE );
-    }
-    
     public static void loadInput(String file) {
         if (inputcount > 4) {
             return;
@@ -137,7 +128,7 @@ public class TextureRemix {
         try {
             img = new MyImage(id, file);
         } catch( Exception e ) {
-            ShowError( "Error loading file "+file+": "+e.toString(), "Error loading File" );
+            TextureRemixGui.ShowError( "Error loading file "+file+": "+e.toString(), "Error loading File" );
             return;
         }
         images.add(id, img);
@@ -169,7 +160,7 @@ public class TextureRemix {
     
     public static void saveAll() {
         if( savepath.length() < 1 ) {
-            ShowError( "Need to set Output Path first!", "Outputpath Missing" );
+            TextureRemixGui.ShowError( "Need to set Output Path first!", "Outputpath Missing" );
             return;
         }
         for (MyImage element : outputs) {
@@ -177,34 +168,34 @@ public class TextureRemix {
                 element.generateImage();
             }
         }
-        ShowMessage( "Saving images complete!", "" );
+        TextureRemixGui.ShowMessage( "Saving images complete!", "" );
     }
     
     public static void splitImage(int id) {
         if( savepath.length() < 1 ) {
-            ShowError( "Need to set Output Path first!", "Outputpath Missing" );
+            TextureRemixGui.ShowError( "Need to set Output Path first!", "Outputpath Missing" );
             return;
         }
         images.get(id).splitImage();
-        ShowMessage( "Split of Image "+id+" complete!", "" );
+        TextureRemixGui.ShowMessage( "Split of Image "+id+" complete!", "" );
     }
     
     public static void splitAlpha(int id) {
         if( savepath.length() < 1 ) {
-            ShowError( "Need to set Output Path first!", "Outputpath Missing" );
+            TextureRemixGui.ShowError( "Need to set Output Path first!", "Outputpath Missing" );
             return;
         }
         images.get(id).splitAlpha();
-        ShowMessage( "Alpha Split of Image "+id+" complete!", "" );
+        TextureRemixGui.ShowMessage( "Alpha Split of Image "+id+" complete!", "" );
     }
     
     public static void splitAlphaHalf(int id) {
         if( savepath.length() < 1 ) {
-            ShowError( "Need to set Output Path first!", "Outputpath Missing" );
+            TextureRemixGui.ShowError( "Need to set Output Path first!", "Outputpath Missing" );
             return;
         }
         images.get(id).splitAlphaHalf();
-        ShowMessage( "Alpha Half split of Image "+id+" complete!", "" );
+        TextureRemixGui.ShowMessage( "Alpha Half split of Image "+id+" complete!", "" );
     }
     
 }
