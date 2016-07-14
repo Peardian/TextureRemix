@@ -243,6 +243,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         jPanel1.setToolTipText("Input Images");
 
         Inbox1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Inbox1.setMaximumSize(new java.awt.Dimension(118, 131));
 
         Image1Caption.setText("Image 1");
         Image1Caption.setName(""); // NOI18N
@@ -382,8 +383,8 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             Inbox1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Inbox1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Image1Caption)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Image1Caption, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(split1))
             .addGroup(Inbox1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -415,6 +416,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         );
 
         Inbox2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Inbox2.setMaximumSize(new java.awt.Dimension(118, 131));
 
         Image2Caption.setText("Image 2");
         Image2Caption.setName("Image2Caption"); // NOI18N
@@ -554,8 +556,8 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             Inbox2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Inbox2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Image2Caption)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Image2Caption, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(split2))
             .addGroup(Inbox2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -587,6 +589,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         );
 
         Inbox3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Inbox3.setMaximumSize(new java.awt.Dimension(118, 131));
 
         Image3Caption.setText("Image 3");
 
@@ -725,8 +728,8 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             Inbox3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Inbox3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Image3Caption)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Image3Caption, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(split3))
             .addGroup(Inbox3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -742,9 +745,11 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         Inbox3Layout.setVerticalGroup(
             Inbox3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Inbox3Layout.createSequentialGroup()
-                .addGroup(Inbox3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Image3Caption)
-                    .addComponent(split3))
+                .addGroup(Inbox3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(split3)
+                    .addGroup(Inbox3Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(Image3Caption)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
@@ -758,6 +763,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         );
 
         Inbox4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Inbox4.setMaximumSize(new java.awt.Dimension(118, 131));
 
         Image4Caption.setText("Image 4");
 
@@ -896,8 +902,8 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             Inbox4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Inbox4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Image4Caption)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Image4Caption, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(split4))
             .addGroup(Inbox4Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
