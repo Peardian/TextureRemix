@@ -59,18 +59,23 @@ public class MyImage {
         id = num;
     }
 
-    public MyImage(int num, String file) {
+    public MyImage(int num, String file) throws Exception {
         id = num;
         loadImageData(file);
     }
     
-    final void loadImageData(String file){
+    final void loadImageData(String file) throws Exception {
         try {
             image = ImageIO.read(new File(file));
+            if( image == null ) {
+                throw new IOException( "Unable to read file, unknown Format!" );
+            }
             loadPixels();
             System.out.println("Successfully loaded input file #"+id+": "+file);
         } catch (Exception e) {
-            System.out.println("Error: Failed to load file!");
+            System.out.println("Error: Failed to load file:\n"+e.toString());
+            e.printStackTrace();
+            throw e;
         }
     }
     
