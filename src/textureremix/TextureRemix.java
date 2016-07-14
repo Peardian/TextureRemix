@@ -137,18 +137,22 @@ public class TextureRemix {
         if (inputcount == 2) {
             TextureRemixGui.Inbox1.setVisible(true);
             TextureRemixGui.Image1Caption.setText( getFilenameFromPath( file ) );
+            TextureRemixGui.Image1Caption.setToolTipText(file);
         }
         if (inputcount == 3) {
             TextureRemixGui.Inbox2.setVisible(true);
             TextureRemixGui.Image2Caption.setText( getFilenameFromPath( file ) );
+            TextureRemixGui.Image2Caption.setToolTipText(file);
         }
         if (inputcount == 4) {
             TextureRemixGui.Inbox3.setVisible(true);
             TextureRemixGui.Image3Caption.setText( getFilenameFromPath( file ) );
+            TextureRemixGui.Image3Caption.setToolTipText(file);
         }
         if (inputcount == 5) {
             TextureRemixGui.Inbox4.setVisible(true);
             TextureRemixGui.Image4Caption.setText( getFilenameFromPath( file ) );
+            TextureRemixGui.Image4Caption.setToolTipText(file);
         }
     }
     
