@@ -22,7 +22,25 @@ Java was chosen so that the tool can run on any operating system. A web applicat
 
 ## What's with the name?
 
-Modern video game engines use various tricks with compressing or consolidating image channels in order to reduce file size and loading times. The main use for this tool is in creating or reversing these kinds of compressed game textures, though it can really be used on any image. Combined with the metaphor of plugging and mixing cables, this created the image of "remixing" the images.
+Modern video game engines use various tricks with compressing or consolidating image channels in order to reduce file size and loading times. The main use for this tool is in creating or reversing these kinds of compressed game textures, though it can really be used on any image. Combined with the metaphor of plugging and mixing cables, this created the idea of "remixing" the images.
+
+## Console Usage
+
+Texture Remix can be invoked from the command line to process images without a single click. Writing commands for this tool is just like using the graphical interface, but without the graphics.
+
+### Syntax
+
+The easiest way to understand the command syntax is to look at the normal graphical interface. Each input and output box can be represented by a number, and each of the colored ports per box can be represented by a letter. Therefore, any wire drawn between an input and output can be represented by just two numbers and two letters.
+
+Here are all of the supported command pieces:
+
+**-i "(file path)"** -  Loads an image as the next input file. You can use this as many times as you want.
+
+**-o "(folder path)"** - Sets the output folder. (You need this to save the images!)
+
+**(in num)(in channel)(out num)(out channel)** - Create a connection ("wire") between an input port and an output port. *(Example: `1r2g` = Input #1 Red to Output #2 Green)*
+
+**!(out num)(out channel)** - Set the inversion flag for an output port. *(Example: `!2r` = invert Output #2 Red)*
 
 ## Planned Features
 
@@ -32,6 +50,8 @@ I learned Java and how to make GUIs in Java just so that I could make this tool,
 * Drag images into any part of the window to load them.
 * Dynamic number of inputs, ability to cancel/clear an input image
 * Dynamic number of outputs (maybe?)
+* Show equivalent terminal command for current arrangement in graphical interface
+* Field to enter terminal command in graphical interface to quickly set wires
 * Thumbnails for input images
 * Preview thumbnail for output images?
 * Animated background behind thumbnails to emphasize transparency
