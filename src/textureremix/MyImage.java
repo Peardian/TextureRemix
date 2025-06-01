@@ -110,40 +110,50 @@ public class MyImage {
     
     //http://stackoverflow.com/questions/6524196/java-get-pixel-array-from-image
     void loadPixels() {
-        byte[] pixels = ((DataBufferByte) image.getRaster().getDataBuffer()).getData();
         pix = new pixel[getHeight()][getWidth()];
-        if (hasAlpha()) {
-            final int pixelLength = 4;
-            for (int pixel = 0, row = 0, col = 0; pixel < pixels.length; pixel += pixelLength) {
+        //check for image types that can't be accessed directly
+        int pic_type = image.getType();
+        if (pic_type == BufferedImage.TYPE_BYTE_INDEXED || pic_type == BufferedImage.TYPE_BYTE_BINARY) {
+            //has_alpha = true;
+            int[] argbvals = image.getRGB(0, 0, getWidth(), getHeight(), null, 0, getWidth());
+            //pixels = new byte[argbvals.length * 4];
+            for (int pixel = 0, row = 0, col = 0; pixel < argbvals.length; pixel += 1) {
                 if (col == getWidth()) {
                     col = 0;
                     row++;
                 }
-                int argb = 0;
+                pix[row][col] = new pixel();
+                pix[row][col].load(argbvals[pixel]);
+                col++;
+            }
+            return;
+        }
+        byte[] pixels = ((DataBufferByte) image.getRaster().getDataBuffer()).getData();
+        boolean has_alpha = hasAlpha();
+        int pixelLength = 3;
+        if (has_alpha) {
+            pixelLength = 4;
+        }
+        for (int pixel = 0, row = 0, col = 0; pixel < pixels.length; pixel += pixelLength) {
+            if (col == getWidth()) {
+                col = 0;
+                row++;
+            }
+            int argb = 0;
+            if (has_alpha) {
                 argb += (((int) pixels[pixel] & 0xff) << 24); // alpha
                 argb += ((int) pixels[pixel + 1] & 0xff); // blue
                 argb += (((int) pixels[pixel + 2] & 0xff) << 8); // green
                 argb += (((int) pixels[pixel + 3] & 0xff) << 16); // red
-                pix[row][col] = new pixel();
-                pix[row][col].load(argb);
-                col++;
-            }
-        } else {
-            final int pixelLength = 3;
-            for (int pixel = 0, row = 0, col = 0; pixel < pixels.length; pixel += pixelLength) {
-                if (col >= getWidth()) {
-                    col = 0;
-                    row++;
-                }
-                int argb = 0;
+            } else {
                 argb += -16777216; // 255 alpha
                 argb += ((int) pixels[pixel] & 0xff); // blue
                 argb += (((int) pixels[pixel + 1] & 0xff) << 8); // green
                 argb += (((int) pixels[pixel + 2] & 0xff) << 16); // red
-                pix[row][col] = new pixel();
-                pix[row][col].load(argb);
-                col++;
             }
+            pix[row][col] = new pixel();
+            pix[row][col].load(argb);
+            col++;
         }
     }
     
