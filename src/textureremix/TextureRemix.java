@@ -94,11 +94,16 @@ public class TextureRemix {
         int max = 0;
         int newmax = 0;
         Pattern p = Pattern.compile("(!?)([0-9]+)([rgba]+)([0-9]*)([rgba]*)(!?)");
+        Pattern pbit = Pattern.compile("([0-9])x([0-9])");
         for (String arg : args) {
             
             //parse input with pattern
             Matcher m = p.matcher(arg);
-            if (!m.matches()) {
+            Matcher mbit = pbit.matcher(arg);
+            if (mbit.matches()) {
+                images.get(Integer.parseInt(mbit.group(1))).splitAlphaBits(Integer.parseInt(mbit.group(2)));
+                continue;
+            } else if (!m.matches()) {
                 System.out.println("Could not read command "+arg);
                 continue;
             }

@@ -232,6 +232,26 @@ public class MyImage {
         }
     }
     
+    public void setLinkGray(int id, char inchannel) {
+        System.out.println("Link: IN "+id+"-"+inchannel+" ==> OUT "+this.id+"-rgb");
+        inputRed = id;
+        inputRedCh = inchannel;
+        inputGreen = id;
+        inputGreenCh = inchannel;
+        inputBlue = id;
+        inputBlueCh = inchannel;
+    }
+    
+    public void setLinkRgb(int id) {
+        System.out.println("Link: IN "+id+"-rgb ==> OUT "+this.id+"-rgb");
+        inputRed = id;
+        inputRedCh = 'r';
+        inputGreen = id;
+        inputGreenCh = 'g';
+        inputBlue = id;
+        inputBlueCh = 'b';
+    }
+    
     public void generateImage() {
         determineSize();
         if (width < 1 && height < 1) {
@@ -430,6 +450,14 @@ public class MyImage {
     }
     
     void splitAlphaHalf() {
+        splitAlphaBits(8);
+    }
+    
+    void splitAlphaBits(int numBits) {
+        if (numBits < 1 || numBits > 8) {
+            return;
+        }
+        int splitVal = numBits * 16;
         MyImage a = new MyImage(id);
         MyImage b = new MyImage(id);
         a.blank(getWidth(), getHeight());
@@ -437,18 +465,18 @@ public class MyImage {
         for (int row = 0; row < getHeight(); row++) {
             for (int col = 0; col < getWidth(); col++) {
                 int alph = getAlpha(row, col);
-                if (alph > 127) {
+                if (alph >= splitVal) {
                     a.setGrey(row, col, 255);
                     if (alph == 255) {
                         b.setGrey(row, col, 255);
                     } else {
-                        b.setGrey(row, col, (alph-128)*2);
+                        b.setGrey(row, col, (alph-splitVal)*16/(16 - numBits));
                     }
                 } else {
-                    if (alph == 127) {
+                    if (alph == splitVal-1) {
                         a.setGrey(row, col, 255);
                     } else {
-                        a.setGrey(row, col, alph*2);
+                        a.setGrey(row, col, alph * 255/(splitVal-1));
                     }
                     b.setGrey(row, col, 0);
                 }

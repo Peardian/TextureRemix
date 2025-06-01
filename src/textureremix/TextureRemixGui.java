@@ -24,7 +24,11 @@ SOFTWARE.
 package textureremix;
 
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Toolkit;
+import java.awt.Point;
 import javax.swing.Timer;
+import javax.swing.ImageIcon;
 import java.io.*;
 import javax.imageio.ImageIO;
 import java.awt.image.*;
@@ -41,6 +45,8 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
     public char dragchan;
     public int clickid;
     public char clickchan;
+    public char hoverin;
+    public char hoverout;
 
     class MyCustomFilter extends javax.swing.filechooser.FileFilter {
         @Override
@@ -85,6 +91,46 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
     @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         this.repaint();
+        updateCursor();
+    }
+    
+    public void updateCursor() {
+        String name = "";
+        switch (clickchan) {
+            case 'r':
+                name = "cursorInR.png";
+                if (hoverout == 'r' || hoverout == 'g' || hoverout == 'b' || hoverout == 'a') {
+                    name = "cursorOutR.png";
+                }
+                break;
+            case 'g':
+                name = "cursorInG.png";
+                if (hoverout == 'r' || hoverout == 'g' || hoverout == 'b' || hoverout == 'a') {
+                    name = "cursorOutG.png";
+                }
+                break;
+            case 'b':
+                name = "cursorInB.png";
+                if (hoverout == 'r' || hoverout == 'g' || hoverout == 'b' || hoverout == 'a') {
+                    name = "cursorOutB.png";
+                }
+                break;
+            case 'a':
+                name = "cursorInA.png";
+                if (hoverout == 'r' || hoverout == 'g' || hoverout == 'b' || hoverout == 'a') {
+                    name = "cursorOutA.png";
+                }
+                break;
+        }
+        
+        Cursor cursor = new Cursor(Cursor.DEFAULT_CURSOR);
+        if (!"".equals(name)) {
+            cursor = Toolkit.getDefaultToolkit().createCustomCursor(new ImageIcon(getClass().getResource(name)).getImage(), new Point(4,3), "Have red");
+        } else if (hoverin == 'r' || hoverin == 'g' || hoverin == 'b' || hoverin == 'a') {
+            cursor = new Cursor(Cursor.HAND_CURSOR);
+        }
+        
+        setCursor(cursor);
     }
 
     /**
@@ -112,7 +158,6 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inR1 = new javax.swing.JPanel();
         jPanel27 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         inB1 = new javax.swing.JPanel();
         inA1 = new javax.swing.JPanel();
         inG1 = new javax.swing.JPanel();
@@ -122,7 +167,6 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inR2 = new javax.swing.JPanel();
         jPanel29 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         inB2 = new javax.swing.JPanel();
         inA2 = new javax.swing.JPanel();
         inG2 = new javax.swing.JPanel();
@@ -132,7 +176,6 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inR3 = new javax.swing.JPanel();
         jPanel31 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         inB3 = new javax.swing.JPanel();
         inA3 = new javax.swing.JPanel();
         inG3 = new javax.swing.JPanel();
@@ -142,7 +185,6 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inR4 = new javax.swing.JPanel();
         jPanel33 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         inB4 = new javax.swing.JPanel();
         inA4 = new javax.swing.JPanel();
         inG4 = new javax.swing.JPanel();
@@ -172,6 +214,8 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         invertA1 = new javax.swing.JCheckBox();
         invertB1 = new javax.swing.JCheckBox();
         clear1 = new javax.swing.JButton();
+        gray1 = new javax.swing.JLabel();
+        rgb1 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
         outR2 = new javax.swing.JPanel();
         outG2 = new javax.swing.JPanel();
@@ -182,6 +226,8 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         invertA2 = new javax.swing.JCheckBox();
         invertB2 = new javax.swing.JCheckBox();
         clear2 = new javax.swing.JButton();
+        gray2 = new javax.swing.JLabel();
+        rgb2 = new javax.swing.JLabel();
         jPanel16 = new javax.swing.JPanel();
         outR3 = new javax.swing.JPanel();
         outG3 = new javax.swing.JPanel();
@@ -192,6 +238,8 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         invertA3 = new javax.swing.JCheckBox();
         invertB3 = new javax.swing.JCheckBox();
         clear3 = new javax.swing.JButton();
+        gray3 = new javax.swing.JLabel();
+        rgb3 = new javax.swing.JLabel();
         jPanel21 = new javax.swing.JPanel();
         outR4 = new javax.swing.JPanel();
         outG4 = new javax.swing.JPanel();
@@ -202,6 +250,8 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         invertA4 = new javax.swing.JCheckBox();
         invertB4 = new javax.swing.JCheckBox();
         clear4 = new javax.swing.JButton();
+        gray4 = new javax.swing.JLabel();
+        rgb4 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 128), new java.awt.Dimension(0, 128), new java.awt.Dimension(32767, 128));
         jLabel7 = new javax.swing.JLabel();
@@ -212,6 +262,8 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Texture Remix (Java Alpha)");
+
+        basePanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel1.setText("Output Folder:");
 
@@ -252,8 +304,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inR1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         inR1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inR1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inR1MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inR1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                inR1MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                inR1MouseReleased(evt);
             }
         });
 
@@ -277,13 +335,6 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             }
         });
 
-        jLabel15.setText("A1/2");
-        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel15MouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
         jPanel27.setLayout(jPanel27Layout);
         jPanel27Layout.setHorizontalGroup(
@@ -291,9 +342,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             .addGroup(jPanel27Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel15)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel27Layout.setVerticalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,18 +350,20 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
                 .addContainerGap()
                 .addComponent(jLabel9)
                 .addContainerGap(24, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel27Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel15)
-                .addContainerGap())
         );
 
         inB1.setBackground(new java.awt.Color(0, 0, 204));
         inB1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         inB1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inB1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inB1MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inB1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                inB1MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                inB1MouseReleased(evt);
             }
         });
 
@@ -331,8 +382,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inA1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         inA1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inA1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inA1MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inA1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                inA1MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                inA1MouseReleased(evt);
             }
         });
 
@@ -351,8 +408,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inG1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         inG1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inG1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inG1MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inG1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                inG1MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                inG1MouseReleased(evt);
             }
         });
 
@@ -423,8 +486,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inR2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         inR2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inR2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inR2MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inR2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                inR2MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                inR2MouseReleased(evt);
             }
         });
 
@@ -448,13 +517,6 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             }
         });
 
-        jLabel16.setText("A1/2");
-        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel16MouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
         jPanel29Layout.setHorizontalGroup(
@@ -462,9 +524,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel16)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel29Layout.setVerticalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -472,18 +532,20 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
                 .addContainerGap()
                 .addComponent(jLabel11)
                 .addContainerGap(24, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel16)
-                .addContainerGap())
         );
 
         inB2.setBackground(new java.awt.Color(0, 0, 204));
         inB2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         inB2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inB2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inB2MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inB2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                inB2MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                inB2MouseReleased(evt);
             }
         });
 
@@ -502,8 +564,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inA2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         inA2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inA2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inA2MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inA2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                inA2MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                inA2MouseReleased(evt);
             }
         });
 
@@ -522,8 +590,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inG2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         inG2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inG2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inG2MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inG2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                inG2MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                inG2MouseReleased(evt);
             }
         });
 
@@ -594,8 +668,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inR3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         inR3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inR3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inR3MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inR3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                inR3MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                inR3MouseReleased(evt);
             }
         });
 
@@ -619,13 +699,6 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             }
         });
 
-        jLabel17.setText("A1/2");
-        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel17MouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
         jPanel31Layout.setHorizontalGroup(
@@ -633,9 +706,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             .addGroup(jPanel31Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel17)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel31Layout.setVerticalGroup(
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -643,18 +714,20 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
                 .addContainerGap()
                 .addComponent(jLabel13)
                 .addContainerGap(24, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel31Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel17)
-                .addContainerGap())
         );
 
         inB3.setBackground(new java.awt.Color(0, 0, 204));
         inB3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         inB3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inB3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inB3MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inB3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                inB3MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                inB3MouseReleased(evt);
             }
         });
 
@@ -673,8 +746,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inA3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         inA3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inA3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inA3MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inA3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                inA3MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                inA3MouseReleased(evt);
             }
         });
 
@@ -693,8 +772,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inG3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         inG3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inG3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inG3MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inG3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                inG3MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                inG3MouseReleased(evt);
             }
         });
 
@@ -765,8 +850,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inR4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         inR4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inR4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inR4MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inR4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                inR4MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                inR4MouseReleased(evt);
             }
         });
 
@@ -790,13 +881,6 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             }
         });
 
-        jLabel18.setText("A1/2");
-        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel18MouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
         jPanel33.setLayout(jPanel33Layout);
         jPanel33Layout.setHorizontalGroup(
@@ -804,9 +888,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             .addGroup(jPanel33Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel18)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel33Layout.setVerticalGroup(
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -814,18 +896,20 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
                 .addContainerGap()
                 .addComponent(jLabel14)
                 .addContainerGap(24, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel33Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel18)
-                .addContainerGap())
         );
 
         inB4.setBackground(new java.awt.Color(0, 0, 204));
         inB4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         inB4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inB4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inB4MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inB4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                inB4MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                inB4MouseReleased(evt);
             }
         });
 
@@ -844,8 +928,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inA4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         inA4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inA4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inA4MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inA4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                inA4MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                inA4MouseReleased(evt);
             }
         });
 
@@ -864,8 +954,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         inG4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         inG4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         inG4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inG4MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                inG4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                inG4MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                inG4MouseReleased(evt);
             }
         });
 
@@ -1064,8 +1160,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         outR1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         outR1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         outR1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                outR1MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                outR1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                outR1MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                outR1MouseReleased(evt);
             }
         });
 
@@ -1084,8 +1186,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         outG1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         outG1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         outG1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                outG1MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                outG1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                outG1MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                outG1MouseReleased(evt);
             }
         });
 
@@ -1104,8 +1212,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         outB1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         outB1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         outB1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                outB1MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                outB1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                outB1MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                outB1MouseReleased(evt);
             }
         });
 
@@ -1124,8 +1238,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         outA1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         outA1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         outA1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                outA1MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                outA1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                outA1MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                outA1MouseReleased(evt);
             }
         });
 
@@ -1171,32 +1291,65 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             }
         });
 
+        gray1.setText("G");
+        gray1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                gray1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                gray1MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                gray1MouseReleased(evt);
+            }
+        });
+
+        rgb1.setText("RGB");
+        rgb1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                rgb1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                rgb1MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                rgb1MouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addComponent(clear1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(outR1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(invertR1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(outG1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(outB1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(outR1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(invertR1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(outG1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(outB1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(invertG1)
+                                .addGap(9, 9, 9)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rgb1)
+                                    .addComponent(invertB1)))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(invertG1)
-                        .addGap(9, 9, 9)
-                        .addComponent(invertB1)))
+                        .addContainerGap()
+                        .addComponent(gray1)))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(invertA1)
                     .addComponent(outA1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(clear1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1212,7 +1365,11 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
                     .addComponent(invertR1)
                     .addComponent(invertB1)
                     .addComponent(invertA1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(gray1)
+                    .addComponent(rgb1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(clear1))
         );
 
@@ -1222,8 +1379,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         outR2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         outR2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         outR2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                outR2MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                outR2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                outR2MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                outR2MouseReleased(evt);
             }
         });
 
@@ -1242,8 +1405,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         outG2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         outG2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         outG2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                outG2MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                outG2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                outG2MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                outG2MouseReleased(evt);
             }
         });
 
@@ -1262,8 +1431,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         outB2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         outB2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         outB2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                outB2MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                outB2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                outB2MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                outB2MouseReleased(evt);
             }
         });
 
@@ -1282,8 +1457,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         outA2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         outA2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         outA2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                outA2MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                outA2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                outA2MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                outA2MouseReleased(evt);
             }
         });
 
@@ -1329,32 +1510,65 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             }
         });
 
+        gray2.setText("G");
+        gray2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                gray2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                gray2MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                gray2MouseReleased(evt);
+            }
+        });
+
+        rgb2.setText("RGB");
+        rgb2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                rgb2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                rgb2MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                rgb2MouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(outR2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(invertR2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(outG2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(outB2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(invertG2)
-                        .addGap(9, 9, 9)
-                        .addComponent(invertB2)))
-                .addGap(6, 6, 6)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(invertA2)
-                    .addComponent(outA2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                 .addComponent(clear2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(outR2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(invertR2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(outG2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(outB2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(invertG2)
+                                .addGap(9, 9, 9)
+                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rgb2)
+                                    .addComponent(invertB2))))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(invertA2)
+                            .addComponent(outA2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(gray2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1370,7 +1584,11 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
                     .addComponent(invertR2)
                     .addComponent(invertB2)
                     .addComponent(invertA2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(gray2)
+                    .addComponent(rgb2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(clear2))
         );
 
@@ -1380,8 +1598,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         outR3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         outR3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         outR3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                outR3MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                outR3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                outR3MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                outR3MouseReleased(evt);
             }
         });
 
@@ -1400,8 +1624,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         outG3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         outG3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         outG3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                outG3MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                outG3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                outG3MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                outG3MouseReleased(evt);
             }
         });
 
@@ -1420,8 +1650,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         outB3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         outB3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         outB3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                outB3MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                outB3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                outB3MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                outB3MouseReleased(evt);
             }
         });
 
@@ -1440,8 +1676,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         outA3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         outA3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         outA3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                outA3MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                outA3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                outA3MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                outA3MouseReleased(evt);
             }
         });
 
@@ -1487,32 +1729,65 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             }
         });
 
+        gray3.setText("G");
+        gray3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                gray3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                gray3MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                gray3MouseReleased(evt);
+            }
+        });
+
+        rgb3.setText("RGB");
+        rgb3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                rgb3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                rgb3MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                rgb3MouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(outR3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(invertR3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addComponent(outG3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(outB3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addComponent(invertG3)
-                        .addGap(9, 9, 9)
-                        .addComponent(invertB3)))
-                .addGap(6, 6, 6)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(invertA3)
-                    .addComponent(outA3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                 .addComponent(clear3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(outR3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(invertR3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel16Layout.createSequentialGroup()
+                                .addComponent(outG3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(outB3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel16Layout.createSequentialGroup()
+                                .addComponent(invertG3)
+                                .addGap(9, 9, 9)
+                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rgb3)
+                                    .addComponent(invertB3))))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(invertA3)
+                            .addComponent(outA3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(gray3)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1528,7 +1803,11 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
                     .addComponent(invertR3)
                     .addComponent(invertB3)
                     .addComponent(invertA3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(gray3)
+                    .addComponent(rgb3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(clear3))
         );
 
@@ -1538,8 +1817,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         outR4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         outR4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         outR4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                outR4MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                outR4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                outR4MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                outR4MouseReleased(evt);
             }
         });
 
@@ -1558,8 +1843,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         outG4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         outG4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         outG4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                outG4MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                outG4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                outG4MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                outG4MouseReleased(evt);
             }
         });
 
@@ -1578,8 +1869,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         outB4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         outB4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         outB4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                outB4MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                outB4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                outB4MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                outB4MouseReleased(evt);
             }
         });
 
@@ -1598,8 +1895,14 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         outA4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         outA4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         outA4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                outA4MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                outA4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                outA4MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                outA4MouseReleased(evt);
             }
         });
 
@@ -1645,32 +1948,59 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
             }
         });
 
+        gray4.setText("G");
+        gray4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                gray4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                gray4MouseExited(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                gray4MouseReleased(evt);
+            }
+        });
+
+        rgb4.setText("RGB");
+        rgb4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                rgb4MouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(outR4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(invertR4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addComponent(outG4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(outB4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addComponent(invertG4)
-                        .addGap(9, 9, 9)
-                        .addComponent(invertB4)))
-                .addGap(6, 6, 6)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(invertA4)
-                    .addComponent(outA4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
                 .addComponent(clear4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(outR4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(invertR4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addComponent(outG4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(outB4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addComponent(invertG4)
+                                .addGap(9, 9, 9)
+                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rgb4)
+                                    .addComponent(invertB4))))
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(invertA4)
+                            .addComponent(outA4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(gray4)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1686,7 +2016,11 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
                     .addComponent(invertR4)
                     .addComponent(invertB4)
                     .addComponent(invertA4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(gray4)
+                    .addComponent(rgb4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(clear4))
         );
 
@@ -1703,7 +2037,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1754,7 +2088,7 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
                     .addGroup(basePanelLayout.createSequentialGroup()
                         .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(DebugPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 525, Short.MAX_VALUE)))
+                        .addComponent(DebugPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         basePanelLayout.setVerticalGroup(
@@ -1972,142 +2306,6 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         TextureRemix.outputs.get(4).setLink('a', 0, 'x');
     }//GEN-LAST:event_clear4ActionPerformed
 
-    private void inR1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inR1MouseClicked
-        //temp until proper dynamic layout is made
-        clickchan = 'r';
-        clickid = 1;
-    }//GEN-LAST:event_inR1MouseClicked
-
-    private void inG1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inG1MouseClicked
-        //temp until proper dynamic layout is made
-        clickchan = 'g';
-        clickid = 1;
-    }//GEN-LAST:event_inG1MouseClicked
-
-    private void inB1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inB1MouseClicked
-        //temp until proper dynamic layout is made
-        clickchan = 'b';
-        clickid = 1;
-    }//GEN-LAST:event_inB1MouseClicked
-
-    private void inA1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inA1MouseClicked
-        //temp until proper dynamic layout is made
-        clickchan = 'a';
-        clickid = 1;
-    }//GEN-LAST:event_inA1MouseClicked
-
-    private void inR2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inR2MouseClicked
-        //temp until proper dynamic layout is made
-        clickchan = 'r';
-        clickid = 2;
-    }//GEN-LAST:event_inR2MouseClicked
-
-    private void inB2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inB2MouseClicked
-        //temp until proper dynamic layout is made
-        clickchan = 'b';
-        clickid = 2;
-    }//GEN-LAST:event_inB2MouseClicked
-
-    private void inA2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inA2MouseClicked
-        //temp until proper dynamic layout is made
-        clickchan = 'a';
-        clickid = 2;
-    }//GEN-LAST:event_inA2MouseClicked
-
-    private void inG2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inG2MouseClicked
-        //temp until proper dynamic layout is made
-        clickchan = 'g';
-        clickid = 2;
-    }//GEN-LAST:event_inG2MouseClicked
-
-    private void inR3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inR3MouseClicked
-        //temp until proper dynamic layout is made
-        clickchan = 'r';
-        clickid = 3;
-    }//GEN-LAST:event_inR3MouseClicked
-
-    private void inB3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inB3MouseClicked
-        //temp until proper dynamic layout is made
-        clickchan = 'b';
-        clickid = 3;
-    }//GEN-LAST:event_inB3MouseClicked
-
-    private void inA3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inA3MouseClicked
-        //temp until proper dynamic layout is made
-        clickchan = 'a';
-        clickid = 3;
-    }//GEN-LAST:event_inA3MouseClicked
-
-    private void inG3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inG3MouseClicked
-        //temp until proper dynamic layout is made
-        clickchan = 'g';
-        clickid = 3;
-    }//GEN-LAST:event_inG3MouseClicked
-
-    private void inR4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inR4MouseClicked
-        //temp until proper dynamic layout is made
-        clickchan = 'r';
-        clickid = 4;
-    }//GEN-LAST:event_inR4MouseClicked
-
-    private void inB4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inB4MouseClicked
-        //temp until proper dynamic layout is made
-        clickchan = 'b';
-        clickid = 4;
-    }//GEN-LAST:event_inB4MouseClicked
-
-    private void inA4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inA4MouseClicked
-        //temp until proper dynamic layout is made
-        clickchan = 'a';
-        clickid = 4;
-    }//GEN-LAST:event_inA4MouseClicked
-
-    private void inG4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inG4MouseClicked
-        //temp until proper dynamic layout is made
-        clickchan = 'g';
-        clickid = 4;
-    }//GEN-LAST:event_inG4MouseClicked
-
-    private void outR1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outR1MouseClicked
-        if (clickid < 1) {
-            TextureRemix.outputs.get(1).setLink('r', 0, 'x');
-            return;
-        }
-        TextureRemix.outputs.get(1).setLink('r', clickid, clickchan);
-        clickid = 0;
-        clickchan = 'x';
-    }//GEN-LAST:event_outR1MouseClicked
-
-    private void outG1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outG1MouseClicked
-        if (clickid < 1) {
-            TextureRemix.outputs.get(1).setLink('g', 0, 'x');
-            return;
-        }
-        TextureRemix.outputs.get(1).setLink('g', clickid, clickchan);
-        clickid = 0;
-        clickchan = 'x';
-    }//GEN-LAST:event_outG1MouseClicked
-
-    private void outB1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outB1MouseClicked
-        if (clickid < 1) {
-            TextureRemix.outputs.get(1).setLink('b', 0, 'x');
-            return;
-        }
-        TextureRemix.outputs.get(1).setLink('b', clickid, clickchan);
-        clickid = 0;
-        clickchan = 'x';
-    }//GEN-LAST:event_outB1MouseClicked
-
-    private void outA1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outA1MouseClicked
-        if (clickid < 1) {
-            TextureRemix.outputs.get(1).setLink('a', 0, 'x');
-            return;
-        }
-        TextureRemix.outputs.get(1).setLink('a', clickid, clickchan);
-        clickid = 0;
-        clickchan = 'x';
-    }//GEN-LAST:event_outA1MouseClicked
-
     private void invertR1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invertR1ActionPerformed
         TextureRemix.outputs.get(1).invertRed = invertR1.isSelected();
     }//GEN-LAST:event_invertR1ActionPerformed
@@ -2172,126 +2370,6 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         TextureRemix.outputs.get(4).invertAlpha = invertA4.isSelected();
     }//GEN-LAST:event_invertA4ActionPerformed
 
-    private void outR2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outR2MouseClicked
-        if (clickid < 1) {
-            TextureRemix.outputs.get(2).setLink('r', 0, 'x');
-            return;
-        }
-        TextureRemix.outputs.get(2).setLink('r', clickid, clickchan);
-        clickid = 0;
-        clickchan = 'x';
-    }//GEN-LAST:event_outR2MouseClicked
-
-    private void outG2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outG2MouseClicked
-        if (clickid < 1) {
-            TextureRemix.outputs.get(2).setLink('g', 0, 'x');
-            return;
-        }
-        TextureRemix.outputs.get(2).setLink('g', clickid, clickchan);
-        clickid = 0;
-        clickchan = 'x';
-    }//GEN-LAST:event_outG2MouseClicked
-
-    private void outB2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outB2MouseClicked
-        if (clickid < 1) {
-            TextureRemix.outputs.get(2).setLink('b', 0, 'x');
-            return;
-        }
-        TextureRemix.outputs.get(2).setLink('b', clickid, clickchan);
-        clickid = 0;
-        clickchan = 'x';
-    }//GEN-LAST:event_outB2MouseClicked
-
-    private void outA2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outA2MouseClicked
-        if (clickid < 1) {
-            TextureRemix.outputs.get(2).setLink('a', 0, 'x');
-            return;
-        }
-        TextureRemix.outputs.get(2).setLink('a', clickid, clickchan);
-        clickid = 0;
-        clickchan = 'x';
-    }//GEN-LAST:event_outA2MouseClicked
-
-    private void outR3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outR3MouseClicked
-        if (clickid < 1) {
-            TextureRemix.outputs.get(3).setLink('r', 0, 'x');
-            return;
-        }
-        TextureRemix.outputs.get(3).setLink('r', clickid, clickchan);
-        clickid = 0;
-        clickchan = 'x';
-    }//GEN-LAST:event_outR3MouseClicked
-
-    private void outG3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outG3MouseClicked
-        if (clickid < 1) {
-            TextureRemix.outputs.get(3).setLink('g', 0, 'x');
-            return;
-        }
-        TextureRemix.outputs.get(3).setLink('g', clickid, clickchan);
-        clickid = 0;
-        clickchan = 'x';
-    }//GEN-LAST:event_outG3MouseClicked
-
-    private void outB3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outB3MouseClicked
-        if (clickid < 1) {
-            TextureRemix.outputs.get(3).setLink('b', 0, 'x');
-            return;
-        }
-        TextureRemix.outputs.get(3).setLink('b', clickid, clickchan);
-        clickid = 0;
-        clickchan = 'x';
-    }//GEN-LAST:event_outB3MouseClicked
-
-    private void outA3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outA3MouseClicked
-        if (clickid < 1) {
-            TextureRemix.outputs.get(3).setLink('a', 0, 'x');
-            return;
-        }
-        TextureRemix.outputs.get(3).setLink('a', clickid, clickchan);
-        clickid = 0;
-        clickchan = 'x';
-    }//GEN-LAST:event_outA3MouseClicked
-
-    private void outR4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outR4MouseClicked
-        if (clickid < 1) {
-            TextureRemix.outputs.get(4).setLink('r', 0, 'x');
-            return;
-        }
-        TextureRemix.outputs.get(4).setLink('r', clickid, clickchan);
-        clickid = 0;
-        clickchan = 'x';
-    }//GEN-LAST:event_outR4MouseClicked
-
-    private void outG4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outG4MouseClicked
-        if (clickid < 1) {
-            TextureRemix.outputs.get(4).setLink('g', 0, 'x');
-            return;
-        }
-        TextureRemix.outputs.get(4).setLink('g', clickid, clickchan);
-        clickid = 0;
-        clickchan = 'x';
-    }//GEN-LAST:event_outG4MouseClicked
-
-    private void outB4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outB4MouseClicked
-        if (clickid < 1) {
-            TextureRemix.outputs.get(4).setLink('b', 0, 'x');
-            return;
-        }
-        TextureRemix.outputs.get(4).setLink('b', clickid, clickchan);
-        clickid = 0;
-        clickchan = 'x';
-    }//GEN-LAST:event_outB4MouseClicked
-
-    private void outA4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outA4MouseClicked
-        if (clickid < 1) {
-            TextureRemix.outputs.get(4).setLink('a', 0, 'x');
-            return;
-        }
-        TextureRemix.outputs.get(4).setLink('a', clickid, clickchan);
-        clickid = 0;
-        clickchan = 'x';
-    }//GEN-LAST:event_outA4MouseClicked
-
     private void split1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_split1MouseClicked
         //temp until proper dynamic layout is implemented
         TextureRemix.splitImage(1);
@@ -2328,21 +2406,621 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
         TextureRemix.splitAlpha(4);
     }//GEN-LAST:event_jLabel14MouseClicked
 
-    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
-        TextureRemix.splitAlphaHalf(1);
-    }//GEN-LAST:event_jLabel15MouseClicked
+    private void inR1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inR1MouseReleased
+        //temp until proper dynamic layout is made
+        clickchan = 'r';
+        clickid = 1;
+    }//GEN-LAST:event_inR1MouseReleased
 
-    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
-        TextureRemix.splitAlphaHalf(2);
-    }//GEN-LAST:event_jLabel16MouseClicked
+    private void inG1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inG1MouseReleased
+        //temp until proper dynamic layout is made
+        clickchan = 'g';
+        clickid = 1;
+    }//GEN-LAST:event_inG1MouseReleased
 
-    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
-        TextureRemix.splitAlphaHalf(3);
-    }//GEN-LAST:event_jLabel17MouseClicked
+    private void inB1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inB1MouseReleased
+        //temp until proper dynamic layout is made
+        clickchan = 'b';
+        clickid = 1;
+    }//GEN-LAST:event_inB1MouseReleased
 
-    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
-        TextureRemix.splitAlphaHalf(4);
-    }//GEN-LAST:event_jLabel18MouseClicked
+    private void inA1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inA1MouseReleased
+        //temp until proper dynamic layout is made
+        clickchan = 'a';
+        clickid = 1;
+    }//GEN-LAST:event_inA1MouseReleased
+
+    private void inR2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inR2MouseReleased
+        //temp until proper dynamic layout is made
+        clickchan = 'r';
+        clickid = 2;
+    }//GEN-LAST:event_inR2MouseReleased
+
+    private void inG2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inG2MouseReleased
+        //temp until proper dynamic layout is made
+        clickchan = 'g';
+        clickid = 2;
+    }//GEN-LAST:event_inG2MouseReleased
+
+    private void inB2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inB2MouseReleased
+        //temp until proper dynamic layout is made
+        clickchan = 'b';
+        clickid = 2;
+    }//GEN-LAST:event_inB2MouseReleased
+
+    private void inA2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inA2MouseReleased
+        //temp until proper dynamic layout is made
+        clickchan = 'a';
+        clickid = 2;
+    }//GEN-LAST:event_inA2MouseReleased
+
+    private void inR3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inR3MouseReleased
+        //temp until proper dynamic layout is made
+        clickchan = 'r';
+        clickid = 3;
+    }//GEN-LAST:event_inR3MouseReleased
+
+    private void inG3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inG3MouseReleased
+        //temp until proper dynamic layout is made
+        clickchan = 'g';
+        clickid = 3;
+    }//GEN-LAST:event_inG3MouseReleased
+
+    private void inB3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inB3MouseReleased
+        //temp until proper dynamic layout is made
+        clickchan = 'b';
+        clickid = 3;
+    }//GEN-LAST:event_inB3MouseReleased
+
+    private void inA3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inA3MouseReleased
+        //temp until proper dynamic layout is made
+        clickchan = 'a';
+        clickid = 3;
+    }//GEN-LAST:event_inA3MouseReleased
+
+    private void inR4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inR4MouseReleased
+        //temp until proper dynamic layout is made
+        clickchan = 'r';
+        clickid = 4;
+    }//GEN-LAST:event_inR4MouseReleased
+
+    private void inG4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inG4MouseReleased
+        //temp until proper dynamic layout is made
+        clickchan = 'g';
+        clickid = 4;
+    }//GEN-LAST:event_inG4MouseReleased
+
+    private void inB4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inB4MouseReleased
+        //temp until proper dynamic layout is made
+        clickchan = 'b';
+        clickid = 4;
+    }//GEN-LAST:event_inB4MouseReleased
+
+    private void inA4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inA4MouseReleased
+        //temp until proper dynamic layout is made
+        clickchan = 'a';
+        clickid = 4;
+    }//GEN-LAST:event_inA4MouseReleased
+
+    private void outR1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outR1MouseReleased
+        if (clickid < 1) {
+            TextureRemix.outputs.get(1).setLink('r', 0, 'x');
+            return;
+        }
+        TextureRemix.outputs.get(1).setLink('r', clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_outR1MouseReleased
+
+    private void outG1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outG1MouseReleased
+        if (clickid < 1) {
+            TextureRemix.outputs.get(1).setLink('g', 0, 'x');
+            return;
+        }
+        TextureRemix.outputs.get(1).setLink('g', clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_outG1MouseReleased
+
+    private void outB1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outB1MouseReleased
+        if (clickid < 1) {
+            TextureRemix.outputs.get(1).setLink('b', 0, 'x');
+            return;
+        }
+        TextureRemix.outputs.get(1).setLink('b', clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_outB1MouseReleased
+
+    private void outA1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outA1MouseReleased
+        if (clickid < 1) {
+            TextureRemix.outputs.get(1).setLink('a', 0, 'x');
+            return;
+        }
+        TextureRemix.outputs.get(1).setLink('a', clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_outA1MouseReleased
+
+    private void outR2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outR2MouseReleased
+        if (clickid < 1) {
+            TextureRemix.outputs.get(2).setLink('r', 0, 'x');
+            return;
+        }
+        TextureRemix.outputs.get(2).setLink('r', clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_outR2MouseReleased
+
+    private void outG2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outG2MouseReleased
+        if (clickid < 1) {
+            TextureRemix.outputs.get(2).setLink('g', 0, 'x');
+            return;
+        }
+        TextureRemix.outputs.get(2).setLink('g', clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_outG2MouseReleased
+
+    private void outB2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outB2MouseReleased
+        if (clickid < 1) {
+            TextureRemix.outputs.get(2).setLink('b', 0, 'x');
+            return;
+        }
+        TextureRemix.outputs.get(2).setLink('b', clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_outB2MouseReleased
+
+    private void outA2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outA2MouseReleased
+        if (clickid < 1) {
+            TextureRemix.outputs.get(2).setLink('a', 0, 'x');
+            return;
+        }
+        TextureRemix.outputs.get(2).setLink('a', clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_outA2MouseReleased
+
+    private void outR3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outR3MouseReleased
+        if (clickid < 1) {
+            TextureRemix.outputs.get(3).setLink('r', 0, 'x');
+            return;
+        }
+        TextureRemix.outputs.get(3).setLink('r', clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_outR3MouseReleased
+
+    private void outG3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outG3MouseReleased
+        if (clickid < 1) {
+            TextureRemix.outputs.get(3).setLink('g', 0, 'x');
+            return;
+        }
+        TextureRemix.outputs.get(3).setLink('g', clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_outG3MouseReleased
+
+    private void outB3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outB3MouseReleased
+        if (clickid < 1) {
+            TextureRemix.outputs.get(3).setLink('b', 0, 'x');
+            return;
+        }
+        TextureRemix.outputs.get(3).setLink('b', clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_outB3MouseReleased
+
+    private void outA3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outA3MouseReleased
+        if (clickid < 1) {
+            TextureRemix.outputs.get(3).setLink('a', 0, 'x');
+            return;
+        }
+        TextureRemix.outputs.get(3).setLink('a', clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_outA3MouseReleased
+
+    private void outR4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outR4MouseReleased
+        if (clickid < 1) {
+            TextureRemix.outputs.get(4).setLink('r', 0, 'x');
+            return;
+        }
+        TextureRemix.outputs.get(4).setLink('r', clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_outR4MouseReleased
+
+    private void outG4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outG4MouseReleased
+        if (clickid < 1) {
+            TextureRemix.outputs.get(4).setLink('g', 0, 'x');
+            return;
+        }
+        TextureRemix.outputs.get(4).setLink('g', clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_outG4MouseReleased
+
+    private void outB4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outB4MouseReleased
+        if (clickid < 1) {
+            TextureRemix.outputs.get(4).setLink('b', 0, 'x');
+            return;
+        }
+        TextureRemix.outputs.get(4).setLink('b', clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_outB4MouseReleased
+
+    private void outA4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outA4MouseReleased
+        if (clickid < 1) {
+            TextureRemix.outputs.get(4).setLink('a', 0, 'x');
+            return;
+        }
+        TextureRemix.outputs.get(4).setLink('a', clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_outA4MouseReleased
+
+    private void gray1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gray1MouseReleased
+        TextureRemix.outputs.get(1).setLinkGray(clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_gray1MouseReleased
+
+    private void rgb1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rgb1MouseReleased
+        TextureRemix.outputs.get(1).setLinkRgb(clickid);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_rgb1MouseReleased
+
+    private void gray2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gray2MouseReleased
+        TextureRemix.outputs.get(2).setLinkGray(clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_gray2MouseReleased
+
+    private void rgb2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rgb2MouseReleased
+        TextureRemix.outputs.get(2).setLinkRgb(clickid);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_rgb2MouseReleased
+
+    private void gray3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gray3MouseReleased
+        TextureRemix.outputs.get(3).setLinkGray(clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_gray3MouseReleased
+
+    private void rgb3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rgb3MouseReleased
+        TextureRemix.outputs.get(3).setLinkRgb(clickid);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_rgb3MouseReleased
+
+    private void gray4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gray4MouseReleased
+        TextureRemix.outputs.get(4).setLinkGray(clickid, clickchan);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_gray4MouseReleased
+
+    private void rgb4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rgb4MouseReleased
+        TextureRemix.outputs.get(4).setLinkRgb(clickid);
+        clickid = 0;
+        clickchan = 'x';
+    }//GEN-LAST:event_rgb4MouseReleased
+
+    private void inR1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inR1MouseEntered
+        hoverin = 'r';
+    }//GEN-LAST:event_inR1MouseEntered
+
+    private void inR1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inR1MouseExited
+        if (hoverin == 'r') hoverin = 'x';
+    }//GEN-LAST:event_inR1MouseExited
+
+    private void inG1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inG1MouseEntered
+        hoverin = 'g';
+    }//GEN-LAST:event_inG1MouseEntered
+
+    private void inG1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inG1MouseExited
+        if (hoverin == 'g') hoverin = 'x';
+    }//GEN-LAST:event_inG1MouseExited
+
+    private void inB1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inB1MouseEntered
+        hoverin = 'b';
+    }//GEN-LAST:event_inB1MouseEntered
+
+    private void inB1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inB1MouseExited
+        if (hoverin == 'b') hoverin = 'x';
+    }//GEN-LAST:event_inB1MouseExited
+
+    private void inA1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inA1MouseEntered
+        hoverin = 'a';
+    }//GEN-LAST:event_inA1MouseEntered
+
+    private void inA1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inA1MouseExited
+        if (hoverin == 'a') hoverin = 'x';
+    }//GEN-LAST:event_inA1MouseExited
+
+    private void inR2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inR2MouseEntered
+        hoverin = 'r';
+    }//GEN-LAST:event_inR2MouseEntered
+
+    private void inR2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inR2MouseExited
+        if (hoverin == 'r') hoverin = 'x';
+    }//GEN-LAST:event_inR2MouseExited
+
+    private void inG2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inG2MouseEntered
+        hoverin = 'g';
+    }//GEN-LAST:event_inG2MouseEntered
+
+    private void inG2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inG2MouseExited
+        if (hoverin == 'g') hoverin = 'x';
+    }//GEN-LAST:event_inG2MouseExited
+
+    private void inB2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inB2MouseEntered
+        hoverin = 'b';
+    }//GEN-LAST:event_inB2MouseEntered
+
+    private void inB2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inB2MouseExited
+        if (hoverin == 'b') hoverin = 'x';
+    }//GEN-LAST:event_inB2MouseExited
+
+    private void inA2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inA2MouseEntered
+        hoverin = 'a';
+    }//GEN-LAST:event_inA2MouseEntered
+
+    private void inA2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inA2MouseExited
+        if (hoverin == 'a') hoverin = 'x';
+    }//GEN-LAST:event_inA2MouseExited
+
+    private void inR3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inR3MouseEntered
+        hoverin = 'r';
+    }//GEN-LAST:event_inR3MouseEntered
+
+    private void inR3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inR3MouseExited
+        if (hoverin == 'r') hoverin = 'x';
+    }//GEN-LAST:event_inR3MouseExited
+
+    private void inG3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inG3MouseEntered
+        hoverin = 'g';
+    }//GEN-LAST:event_inG3MouseEntered
+
+    private void inG3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inG3MouseExited
+        if (hoverin == 'g') hoverin = 'x';
+    }//GEN-LAST:event_inG3MouseExited
+
+    private void inB3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inB3MouseEntered
+        hoverin = 'b';
+    }//GEN-LAST:event_inB3MouseEntered
+
+    private void inB3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inB3MouseExited
+        if (hoverin == 'b') hoverin = 'x';
+    }//GEN-LAST:event_inB3MouseExited
+
+    private void inA3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inA3MouseEntered
+        hoverin = 'a';
+    }//GEN-LAST:event_inA3MouseEntered
+
+    private void inA3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inA3MouseExited
+        if (hoverin == 'a') hoverin = 'x';
+    }//GEN-LAST:event_inA3MouseExited
+
+    private void inR4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inR4MouseEntered
+        hoverin = 'r';
+    }//GEN-LAST:event_inR4MouseEntered
+
+    private void inR4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inR4MouseExited
+        if (hoverin == 'r') hoverin = 'x';
+    }//GEN-LAST:event_inR4MouseExited
+
+    private void inG4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inG4MouseEntered
+        hoverin = 'g';
+    }//GEN-LAST:event_inG4MouseEntered
+
+    private void inG4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inG4MouseExited
+        if (hoverin == 'g') hoverin = 'x';
+    }//GEN-LAST:event_inG4MouseExited
+
+    private void inB4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inB4MouseEntered
+        hoverin = 'b';
+    }//GEN-LAST:event_inB4MouseEntered
+
+    private void inB4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inB4MouseExited
+        if (hoverin == 'b') hoverin = 'x';
+    }//GEN-LAST:event_inB4MouseExited
+
+    private void inA4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inA4MouseEntered
+        hoverin = 'a';
+    }//GEN-LAST:event_inA4MouseEntered
+
+    private void inA4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inA4MouseExited
+        if (hoverin == 'a') hoverin = 'x';
+    }//GEN-LAST:event_inA4MouseExited
+
+    private void outR1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outR1MouseEntered
+        hoverout = 'r';
+    }//GEN-LAST:event_outR1MouseEntered
+
+    private void outR1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outR1MouseExited
+        if (hoverout == 'r') hoverout = 'x';
+    }//GEN-LAST:event_outR1MouseExited
+
+    private void outG1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outG1MouseEntered
+        hoverout = 'g';
+    }//GEN-LAST:event_outG1MouseEntered
+
+    private void outG1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outG1MouseExited
+        if (hoverout == 'g') hoverout = 'x';
+    }//GEN-LAST:event_outG1MouseExited
+
+    private void outB1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outB1MouseEntered
+        hoverout = 'b';
+    }//GEN-LAST:event_outB1MouseEntered
+
+    private void outB1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outB1MouseExited
+        if (hoverout == 'b') hoverout = 'x';
+    }//GEN-LAST:event_outB1MouseExited
+
+    private void outA1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outA1MouseEntered
+        hoverout = 'a';
+    }//GEN-LAST:event_outA1MouseEntered
+
+    private void outA1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outA1MouseExited
+        if (hoverout == 'a') hoverout = 'x';
+    }//GEN-LAST:event_outA1MouseExited
+
+    private void outR2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outR2MouseEntered
+        hoverout = 'r';
+    }//GEN-LAST:event_outR2MouseEntered
+
+    private void outR2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outR2MouseExited
+        if (hoverout == 'r') hoverout = 'x';
+    }//GEN-LAST:event_outR2MouseExited
+
+    private void outG2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outG2MouseEntered
+        hoverout = 'g';
+    }//GEN-LAST:event_outG2MouseEntered
+
+    private void outG2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outG2MouseExited
+        if (hoverout == 'g') hoverout = 'x';
+    }//GEN-LAST:event_outG2MouseExited
+
+    private void outB2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outB2MouseEntered
+        hoverout = 'b';
+    }//GEN-LAST:event_outB2MouseEntered
+
+    private void outB2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outB2MouseExited
+        if (hoverout == 'b') hoverout = 'x';
+    }//GEN-LAST:event_outB2MouseExited
+
+    private void outA2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outA2MouseEntered
+        hoverout = 'a';
+    }//GEN-LAST:event_outA2MouseEntered
+
+    private void outA2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outA2MouseExited
+        if (hoverout == 'a') hoverout = 'x';
+    }//GEN-LAST:event_outA2MouseExited
+
+    private void outR3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outR3MouseEntered
+        hoverout = 'r';
+    }//GEN-LAST:event_outR3MouseEntered
+
+    private void outR3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outR3MouseExited
+        if (hoverout == 'r') hoverout = 'x';
+    }//GEN-LAST:event_outR3MouseExited
+
+    private void outG3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outG3MouseEntered
+        hoverout = 'g';
+    }//GEN-LAST:event_outG3MouseEntered
+
+    private void outG3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outG3MouseExited
+        if (hoverout == 'g') hoverout = 'x';
+    }//GEN-LAST:event_outG3MouseExited
+
+    private void outB3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outB3MouseEntered
+        hoverout = 'b';
+    }//GEN-LAST:event_outB3MouseEntered
+
+    private void outB3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outB3MouseExited
+        if (hoverout == 'b') hoverout = 'x';
+    }//GEN-LAST:event_outB3MouseExited
+
+    private void outA3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outA3MouseEntered
+        hoverout = 'a';
+    }//GEN-LAST:event_outA3MouseEntered
+
+    private void outA3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outA3MouseExited
+        if (hoverout == 'a') hoverout = 'x';
+    }//GEN-LAST:event_outA3MouseExited
+
+    private void outR4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outR4MouseEntered
+        hoverout = 'r';
+    }//GEN-LAST:event_outR4MouseEntered
+
+    private void outR4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outR4MouseExited
+        if (hoverout == 'r') hoverout = 'x';
+    }//GEN-LAST:event_outR4MouseExited
+
+    private void outG4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outG4MouseEntered
+        hoverout = 'g';
+    }//GEN-LAST:event_outG4MouseEntered
+
+    private void outG4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outG4MouseExited
+        if (hoverout == 'g') hoverout = 'x';
+    }//GEN-LAST:event_outG4MouseExited
+
+    private void outB4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outB4MouseEntered
+        hoverout = 'b';
+    }//GEN-LAST:event_outB4MouseEntered
+
+    private void outB4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outB4MouseExited
+        if (hoverout == 'b') hoverout = 'x';
+    }//GEN-LAST:event_outB4MouseExited
+
+    private void outA4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outA4MouseEntered
+        hoverout = 'a';
+    }//GEN-LAST:event_outA4MouseEntered
+
+    private void outA4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_outA4MouseExited
+        if (hoverout == 'a') hoverout = 'x';
+    }//GEN-LAST:event_outA4MouseExited
+
+    private void gray1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gray1MouseEntered
+        hoverout = 'a';
+    }//GEN-LAST:event_gray1MouseEntered
+
+    private void gray1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gray1MouseExited
+        hoverout = 'x';
+    }//GEN-LAST:event_gray1MouseExited
+
+    private void rgb1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rgb1MouseEntered
+        hoverout = 'a';
+    }//GEN-LAST:event_rgb1MouseEntered
+
+    private void rgb1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rgb1MouseExited
+        hoverout = 'x';
+    }//GEN-LAST:event_rgb1MouseExited
+
+    private void gray2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gray2MouseEntered
+        hoverout = 'a';
+    }//GEN-LAST:event_gray2MouseEntered
+
+    private void gray2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gray2MouseExited
+        hoverout = 'x';
+    }//GEN-LAST:event_gray2MouseExited
+
+    private void rgb2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rgb2MouseEntered
+        hoverout = 'a';
+    }//GEN-LAST:event_rgb2MouseEntered
+
+    private void rgb2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rgb2MouseExited
+        hoverout = 'x';
+    }//GEN-LAST:event_rgb2MouseExited
+
+    private void gray3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gray3MouseEntered
+        hoverout = 'a';
+    }//GEN-LAST:event_gray3MouseEntered
+
+    private void gray3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gray3MouseExited
+        hoverout = 'x';
+    }//GEN-LAST:event_gray3MouseExited
+
+    private void rgb3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rgb3MouseEntered
+        hoverout = 'a';
+    }//GEN-LAST:event_rgb3MouseEntered
+
+    private void rgb3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rgb3MouseExited
+        hoverout = 'x';
+    }//GEN-LAST:event_rgb3MouseExited
+
+    private void gray4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gray4MouseEntered
+        hoverout = 'a';
+    }//GEN-LAST:event_gray4MouseEntered
+
+    private void gray4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gray4MouseExited
+        hoverout = 'x';
+    }//GEN-LAST:event_gray4MouseExited
 
     /**
      * @param args the command line arguments
@@ -2403,6 +3081,10 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
     private javax.swing.Box.Filler filler2;
     private javax.swing.JButton folderButton;
     private javax.swing.JFileChooser folderChooser;
+    private javax.swing.JLabel gray1;
+    private javax.swing.JLabel gray2;
+    private javax.swing.JLabel gray3;
+    private javax.swing.JLabel gray4;
     public static javax.swing.JPanel inA1;
     public static javax.swing.JPanel inA2;
     public static javax.swing.JPanel inA3;
@@ -2444,10 +3126,6 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -2483,6 +3161,10 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
     public static javax.swing.JPanel outR2;
     public static javax.swing.JPanel outR3;
     public static javax.swing.JPanel outR4;
+    private javax.swing.JLabel rgb1;
+    private javax.swing.JLabel rgb2;
+    private javax.swing.JLabel rgb3;
+    private javax.swing.JLabel rgb4;
     private javax.swing.JLabel split1;
     private javax.swing.JLabel split2;
     private javax.swing.JLabel split3;
