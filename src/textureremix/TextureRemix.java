@@ -23,6 +23,10 @@ SOFTWARE.
  */
 package textureremix;
 
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -50,6 +54,9 @@ public class TextureRemix {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        // Check for savepath persistence file
+        LoadPersistedSavePath();
+
         //setup
         images.add(0,null);
         outputs.add(0,null);
@@ -162,8 +169,58 @@ public class TextureRemix {
         }
     }
     
+    private static void LoadPersistedSavePath() {
+        File f = new File("savepath.txt");
+        if (f.exists() && f.isFile()) {
+            try {
+                List<String> lines = Files.readAllLines(Paths.get(f.getAbsolutePath()), Charset.defaultCharset());
+                if (lines.size() > 0) {
+                    savepath = lines.get(0);
+                } else {
+                    System.out.println("File " + f.getAbsolutePath() + " is empty");
+                }
+            } catch (IOException io) {
+                // ignore exception, savepath will be empty
+                System.out.println("Error reading file " + f.getAbsolutePath() + ": " + io.toString());
+            }
+        } else {
+            System.out.println("File savepath.txt not found");
+        }
+    }
+    
+    private static void SavePersistedSavePath() {
+        try {
+            Writer writer = new BufferedWriter(
+                new OutputStreamWriter(
+                    new FileOutputStream("./savepath.txt"),
+                    Charset.defaultCharset()
+                )
+            );
+            writer.write(savepath);
+            writer.close();
+        } catch (IOException io) {
+        }
+    }
+    
     public static void setPath(String path) {
+        if (path.contains("Select a folder")) {
+            return;
+        }
+        System.out.println("Savepath set to " + path);
         savepath = path;
+        SavePersistedSavePath();
+    }
+    
+    public static String getFilenameFromPath(String file) {
+        int i1 = file.lastIndexOf("/");
+        if (i1 != -1) {
+            file = file.substring(i1 + 1);
+        }
+        int i2 = file.lastIndexOf("\\");
+        if (i2 != -1) {
+            file = file.substring(i2 + 1);
+        }
+        return file;
     }
     
     public static void loadInput(String file) {
@@ -171,23 +228,35 @@ public class TextureRemix {
             return;
         }
         int id = inputcount;
-        images.add(id, new MyImage(id, file));
-        inputcount++;
-        //temporary GUI code until proper dynamic gui is implemented
-        if (TextureRemixGui.Inbox1==null) {
+        MyImage img;
+        try {
+            img = new MyImage(id, file);
+        } catch (Exception e) {
+            TextureRemixGui.ShowError("Error loading file " + file + ": " + e.toString(), "Error loading File");
             return;
         }
-        if (inputcount > 1) {
+        images.add(id, img);
+        inputcount++;
+        //temporary GUI code until proper dynamic gui is implemented
+        if (inputcount == 2) {
             TextureRemixGui.Inbox1.setVisible(true);
+            TextureRemixGui.Image1Caption.setText(getFilenameFromPath(file));
+            TextureRemixGui.Image1Caption.setToolTipText(file);
         }
-        if (inputcount > 2) {
+        if (inputcount == 3) {
             TextureRemixGui.Inbox2.setVisible(true);
+            TextureRemixGui.Image2Caption.setText(getFilenameFromPath(file));
+            TextureRemixGui.Image2Caption.setToolTipText(file);
         }
-        if (inputcount > 3) {
+        if (inputcount == 4) {
             TextureRemixGui.Inbox3.setVisible(true);
+            TextureRemixGui.Image3Caption.setText(getFilenameFromPath(file));
+            TextureRemixGui.Image3Caption.setToolTipText(file);
         }
-        if (inputcount > 4) {
+        if (inputcount == 5) {
             TextureRemixGui.Inbox4.setVisible(true);
+            TextureRemixGui.Image4Caption.setText(getFilenameFromPath(file));
+            TextureRemixGui.Image4Caption.setToolTipText(file);
         }
     }
     
@@ -198,23 +267,43 @@ public class TextureRemix {
     }
     
     public static void saveAll() {
+        if (savepath.length() < 1) {
+            TextureRemixGui.ShowError("Need to set Output Path first!", "Outputpath Missing");
+            return;
+        }
         for (MyImage element : outputs) {
             if (element != null) {
                 element.generateImage();
             }
         }
+        TextureRemixGui.ShowMessage("Saving images complete!", "");
     }
     
     public static void splitImage(int id) {
+        if (savepath.length() < 1) {
+            TextureRemixGui.ShowError("Need to set Output Path first!", "Outputpath Missing");
+            return;
+        }
         images.get(id).splitImage();
+        TextureRemixGui.ShowMessage("Split of Image " + id + " complete!", "");
     }
     
     public static void splitAlpha(int id) {
+        if (savepath.length() < 1) {
+            TextureRemixGui.ShowError("Need to set Output Path first!", "Outputpath Missing");
+            return;
+        }
         images.get(id).splitAlpha();
+        TextureRemixGui.ShowMessage("Color / Alpha Split of Image " + id + " complete!", "");
     }
     
     public static void splitAlphaHalf(int id) {
+        if (savepath.length() < 1) {
+            TextureRemixGui.ShowError("Need to set Output Path first!", "Outputpath Missing");
+            return;
+        }
         images.get(id).splitAlphaHalf();
+        TextureRemixGui.ShowMessage("Alpha Half split of Image " + id + " complete!", "");
     }
     
 }
