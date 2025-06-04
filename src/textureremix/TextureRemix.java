@@ -238,6 +238,9 @@ public class TextureRemix {
         images.add(id, img);
         inputcount++;
         //temporary GUI code until proper dynamic gui is implemented
+        if (TextureRemixGui.Inbox1==null) {
+            return;
+        }
         if (inputcount == 2) {
             TextureRemixGui.Inbox1.setVisible(true);
             TextureRemixGui.Image1Caption.setText(getFilenameFromPath(file));

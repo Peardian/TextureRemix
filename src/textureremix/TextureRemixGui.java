@@ -2323,10 +2323,18 @@ public class TextureRemixGui extends javax.swing.JFrame implements java.awt.even
     }//GEN-LAST:event_clear4ActionPerformed
 
     public static void ShowError( String msg, String headline ) {
+        if (TextureRemixGui.Inbox1 == null) {
+            System.out.println(msg);
+            return;
+        }
         JOptionPane.showMessageDialog(null, msg, headline, JOptionPane.ERROR_MESSAGE );
     }
     
     public static void ShowMessage( String msg, String headline ) {
+        if (TextureRemixGui.Inbox1 == null) {
+            System.out.println(msg);
+            return;
+        }
         JOptionPane.showMessageDialog(null, msg, headline, JOptionPane.INFORMATION_MESSAGE );
     }
     
